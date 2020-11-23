@@ -8,16 +8,28 @@ class Node {
     private Node prevNode;
     private Node nextNode;
 
-    public void setValue(Object value) {
-        this.value = value;
+    public Node(Object val) {
+        value = val;
+        prevNode = null;
+        nextNode = null;
     }
 
-    public void setPrevNode(Node prevNode) {
-        this.prevNode = prevNode;
+    public Node(Object val, Node prevVal, Node nextVal) {
+        value = val;
+        prevNode = prevVal;
+        nextNode = nextVal;
     }
 
-    public void setNextNode(Node nextNode) {
-        this.nextNode = nextNode;
+    public void setValue(Object val) {
+        this.value = val;
+    }
+
+    public void setPrevNode(Node prevN) {
+        this.prevNode = prevN;
+    }
+
+    public void setNextNode(Node nextN) {
+        this.nextNode = nextN;
     }
 
     public Object getValue() {
@@ -31,19 +43,6 @@ class Node {
     public Node getNextNode() {
         return nextNode;
     }
-
-    public Node(Object val, Node prevVal, Node nextVal) {
-        value = val;
-        prevNode = prevVal;
-        nextNode = nextVal;
-    }
-
-    public Node(Object val) {
-        value = val;
-        prevNode = null;
-        nextNode = null;
-    }
-
 }
 
 public class ImmutableLinkedList implements ImmutableList {
@@ -88,7 +87,8 @@ public class ImmutableLinkedList implements ImmutableList {
         Node oldCurrent = firstNode;
         Node newCurrent = this.first;
         while (oldCurrent.getNextNode() != null) {
-            newCurrent.setNextNode(new Node(oldCurrent.getNextNode().getValue()));
+            newCurrent.setNextNode(
+                    new Node(oldCurrent.getNextNode().getValue()));
             newCurrent.getNextNode().setPrevNode(newCurrent);
             newCurrent = newCurrent.getNextNode();
             oldCurrent = oldCurrent.getNextNode();
@@ -300,7 +300,8 @@ public class ImmutableLinkedList implements ImmutableList {
             newList.first.setPrevNode(newNode);
             newList.first = newNode;
         } else {
-            newList.first = newList.last = newNode;
+            newList.first = newNode;
+            newList.last = newNode;
         }
 
         return newList;
@@ -315,7 +316,8 @@ public class ImmutableLinkedList implements ImmutableList {
             newList.last.setNextNode(newNode);
             newList.last = newNode;
         } else {
-            newList.first = newList.last = newNode;
+            newList.first = newNode;
+            newList.last = newNode;
         }
 
         return newList;
