@@ -3,9 +3,49 @@ package ua.edu.ucu.collections.immutable;
 import java.util.Arrays;
 
 
-
-
 public class ImmutableLinkedList implements ImmutableList {
+    class Node {
+        private Object value;
+        private Node prevNode;
+        private Node nextNode;
+
+        public Node(Object val) {
+            value = val;
+            prevNode = null;
+            nextNode = null;
+        }
+
+        public Node(Object val, Node prevVal, Node nextVal) {
+            value = val;
+            prevNode = prevVal;
+            nextNode = nextVal;
+        }
+
+        public void setValue(Object val) {
+            this.value = val;
+        }
+
+        public void setPrevNode(Node prevN) {
+            this.prevNode = prevN;
+        }
+
+        public void setNextNode(Node nextN) {
+            this.nextNode = nextN;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Node getPrevNode() {
+            return prevNode;
+        }
+
+        public Node getNextNode() {
+            return nextNode;
+        }
+    }
+
     private Node first;
     private Node last;
     private int linkedListSize;
@@ -133,7 +173,6 @@ public class ImmutableLinkedList implements ImmutableList {
         if (addElementsAtPositionIfNeeded(linkedListSize, index, current, c)) {
             newList.last = current.getNextNode();
         }
-        System.out.println("lala " + Arrays.toString(newList.toArray()));
         return newList;
     }
 
@@ -244,7 +283,6 @@ public class ImmutableLinkedList implements ImmutableList {
         Object[] objArray = new Object[linkedListSize];
         Node current = first;
 
-        System.out.println(linkedListSize);
         for (int counter = 0; counter < linkedListSize; counter++) {
             objArray[counter] = current.getValue();
             current = current.getNextNode();
