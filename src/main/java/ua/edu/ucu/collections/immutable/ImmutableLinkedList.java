@@ -1,10 +1,8 @@
 package ua.edu.ucu.collections.immutable;
 
-import java.util.Arrays;
-
 
 public class ImmutableLinkedList implements ImmutableList {
-    class Node {
+    static class Node {
         private Object value;
         private Node prevNode;
         private Node nextNode;
