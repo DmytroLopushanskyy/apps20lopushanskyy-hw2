@@ -1,8 +1,6 @@
 package ua.edu.ucu.collections.immutable;
 
 
-import java.util.Arrays;
-
 public class ImmutableArrayList implements ImmutableList {
     private Object[] objectsArray;
 
@@ -33,15 +31,17 @@ public class ImmutableArrayList implements ImmutableList {
         return addAll(objectsArray.length, c);
     }
 
-    private int addElementsAtPositionIfNeeded(int counter, int index, Object[] newObjectsArray, Object[] c) {
-        if (counter == index) {
+    private int addElementsAtPositionIfNeeded(int counter, int index,
+                                              Object[] newObjectsArray, Object[] c) {
+        int i = counter;
+        if (i == index) {
             // inserting as last elements!
             for (Object objNew: c) {
                 newObjectsArray[counter] = objNew;
-                counter++;
+                i++;
             }
         }
-        return counter;
+        return i;
     }
 
     @Override
@@ -54,7 +54,8 @@ public class ImmutableArrayList implements ImmutableList {
 
         int counter = 0;
         for (Object obj: objectsArray) {
-            counter = addElementsAtPositionIfNeeded(counter, index, newObjectsArray, c);
+            counter = addElementsAtPositionIfNeeded(
+                    counter, index, newObjectsArray, c);
             newObjectsArray[counter] = obj;
             counter++;
         }
@@ -107,7 +108,7 @@ public class ImmutableArrayList implements ImmutableList {
         for (Object obj: objectsArray) {
             if (counter == index) {
                 newObjectsArray[counter] = e;
-                counter ++;
+                counter++;
                 continue;
             }
             newObjectsArray[counter] = obj;
