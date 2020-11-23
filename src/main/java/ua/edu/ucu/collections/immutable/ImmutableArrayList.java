@@ -37,7 +37,7 @@ public class ImmutableArrayList implements ImmutableList {
         if (i == index) {
             // inserting as last elements!
             for (Object objNew: c) {
-                newObjectsArray[counter] = objNew;
+                newObjectsArray[i] = objNew;
                 i++;
             }
         }
