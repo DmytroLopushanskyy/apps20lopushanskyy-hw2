@@ -31,8 +31,8 @@ public class ImmutableArrayList implements ImmutableList {
         return addAll(objectsArray.length, c);
     }
 
-    private int addElementsAtPositionIfNeeded(int counter, int index,
-                                              Object[] newObjectsArray, Object[] c) {
+    private int addElementsAtPositionIfNeeded
+            (int counter, int index, Object[] newObjectsArray, Object[] c) {
         int i = counter;
         if (i == index) {
             // inserting as last elements!

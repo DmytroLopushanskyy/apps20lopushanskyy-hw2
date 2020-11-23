@@ -156,8 +156,8 @@ public class ImmutableLinkedList implements ImmutableList {
             return new ImmutableLinkedList(c);
         }
 
-        ImmutableLinkedList newList = new ImmutableLinkedList
-                (first, last, linkedListSize + c.length);
+        ImmutableLinkedList newList = new ImmutableLinkedList(
+                first, last, linkedListSize + c.length);
 
         Node current = newList.first;
 
@@ -200,8 +200,8 @@ public class ImmutableLinkedList implements ImmutableList {
             throw new IndexOutOfBoundsException();
         }
 
-        ImmutableLinkedList newList = new ImmutableLinkedList
-                (first, last, linkedListSize - 1);
+        ImmutableLinkedList newList = new ImmutableLinkedList(
+                first, last, linkedListSize - 1);
 
         if (index == 0) {  // Corner case. Remove first
             newList.first = newList.first.getNextNode();
@@ -233,8 +233,8 @@ public class ImmutableLinkedList implements ImmutableList {
             throw new IndexOutOfBoundsException();
         }
 
-        ImmutableLinkedList newList = new ImmutableLinkedList
-                (first, last, linkedListSize);
+        ImmutableLinkedList newList = new ImmutableLinkedList(
+                first, last, linkedListSize);
 
         Node current = newList.first;
         int counter = 0;
@@ -292,8 +292,8 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     public ImmutableLinkedList addFirst(Object e) {
-        ImmutableLinkedList newList = new ImmutableLinkedList
-                (first, last, linkedListSize + 1);
+        ImmutableLinkedList newList = new ImmutableLinkedList(
+                first, last, linkedListSize + 1);
 
         Node newNode = new Node(e, null, newList.first);
         if (newList.first != null) {
@@ -307,8 +307,8 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     public ImmutableLinkedList addLast(Object e) {
-        ImmutableLinkedList newList = new ImmutableLinkedList
-                (first, last, linkedListSize + 1);
+        ImmutableLinkedList newList = new ImmutableLinkedList(
+                first, last, linkedListSize + 1);
 
         Node newNode = new Node(e, newList.last, null);
         if (newList.last != null) {
